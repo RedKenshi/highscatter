@@ -1,0 +1,240 @@
+@import 'variables';
+
+.navbar{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  position: fixed;
+  background-color: $bg-color;
+  & hr{
+    text-align: center;
+    background-color: $flat-dark-dark;
+    border: 1px solid $flat-dark-dark;
+    width: 30%;
+    align-self: center;
+  }
+  & .navbar-nav {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    flex-direction: column;
+    padding-inline-start: 0;
+    &.navbar-logo{
+      box-shadow: 0 0 .5rem .25rem #0002;
+      display: flex;
+      min-height: 4rem;
+      width: 100vw;
+      justify-content: space-between;
+      flex-shrink: 1;
+      flex-direction: row;
+    }
+    &.navbar-home.hide{
+      padding: 1rem 0;
+      overflow-y: auto;
+      flex-shrink: 1;
+      flex-grow: 1;
+    }
+    &.navbar-logout{
+      margin-top: auto;
+      box-shadow: 0 0 .5rem .25rem #0002;
+      flex-shrink: 1;
+    }
+    &.navbar-expanded{
+      flex-shrink: 1;
+      display: flex;
+    }
+    & .logo{
+      margin: auto 1.5rem;
+      & .nav-link{
+        text-decoration: none;
+        text-transform: uppercase;
+        align-items: center;
+        & .link-text{
+          text-align: center;
+          display: none;
+        }
+        & i{
+          text-align: center;
+          margin: auto 1rem;
+          display: none;
+        }
+      }
+    }
+    & .nav-item{
+      list-style: none;
+      cursor: pointer;
+      & .nav-link{
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        & .link-text{
+          white-space: nowrap;
+          display: none;
+          grid-column-start: 2;
+          margin-left: 0 1.5rem;
+          //color:$theme-text;
+          color: $text;
+        }
+        & .fa{
+          width: 5rem !important;
+          text-align: center;
+          margin: .7rem 0;
+          width: 5rem;
+          font-size: 1.8em;
+        }
+        &:hover{
+          transition: filter 200ms ease;
+          transition: background-color 200ms ease;
+          background-color: #fff;
+        }
+        &:not(:hover) .fa{
+          color: $text;
+        }
+      }
+    }
+  }
+  &.expanded{
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    width: 100vw;
+    height: 100vh;
+    & .navbar-nav {
+      display: flex;      
+    }
+    & hr{
+      margin: 1rem 0;
+    }
+    & .link-text{
+      display: block !important;
+    }
+    & .nav-expand{
+      display: none;
+    }
+    & .nav-collapse{
+      display: block;
+    }
+  }
+  &:not(.expanded){
+    & .hide,
+    & hr{
+      display: none;
+    }
+    & .nav-expand{
+      display: block;
+    }
+    & .nav-collapse{
+      display: none;
+    }
+  }
+  & .logo .nav-link-logo {
+    & .link-text{
+      color:$text;
+      letter-spacing: .2ch;
+    }
+    & i{
+      height: 2rem;
+    }
+  }
+}
+
+.fa.green{ color: $green;}
+.fa.blue{ color: $blue;}
+.fa.red{ color: $red;}
+.fa.yellow{ color: $yellow;}
+.fa.orange{ color: $orange;}
+.fa.teal{ color: $teal;}
+.fa.olive{ color: $olive;}
+.fa.purple{ color: $purple;}
+.fa.violet{ color: $violet;}
+.fa.pink{ color: $pink;}
+.fa.grey{ color: $grey;}
+.fa.brown{ color: $brown;}
+.fa.white{ color: $full-white;}
+.fa.dark{ color: $flat-dark-dark;}
+
+@media screen and (min-width : 56rem) {
+  .navbar{
+    height: 100%;
+    width: 5rem;
+    transition: width 500ms ease;
+    box-shadow: 0 0 .5rem .25rem #0002;
+    & .navbar-nav.navbar-logo{
+      display: flex;
+      margin-bottom: .5rem;
+      & i{
+        display: none;
+      }
+    }
+    & .navbar-nav.navbar-home{display: flex;}
+    & .navbar-nav.navbar-pages{display: flex;}
+    & .navbar-nav.navbar-admin{display: flex;}
+    & .navbar-nav.navbar-logout{display: flex;}
+    & .nav-expand{
+      display: none !important;
+    }
+    & .nav-collapse{
+      display: none !important;
+    }
+    & hr {
+      display: block !important;
+      margin: 1.5rem 0;
+    }
+    &:hover{
+      & .logo i{
+        animation: rotation .5s ease-in-out forwards;
+      }
+      width: 16rem;
+      transition: backdrop-filter 500ms ease;
+      & .link-text{
+        display: block !important;
+      }
+    }
+    & .navbar-nav {
+      flex-direction: column;
+      &.navbar-logo{
+        width: unset;
+      }
+      & .logo{
+        width:100%;
+        margin: auto;
+        & .nav-link{
+          text-decoration: none;
+          text-transform: uppercase;
+          align-items: center;
+          display: flex;
+          justify-content: start;
+          flex-direction: row-reverse;
+          & .link-text{
+            flex-grow: 1;
+            text-align: center;
+            display: none;
+            margin: auto;
+          }
+          & i{
+            text-align: center;
+            margin: unset;
+            display: block;
+            font-size: 2rem;
+            flex: 0 0 5rem;
+          }
+        }
+      }
+    }
+    & .navbar-nav.navbar-expanded{
+      display: none;
+    }
+  }
+}
+@keyframes rotation {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+    transform: rotate(180deg);
+	}
+}

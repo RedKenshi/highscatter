@@ -1,0 +1,15 @@
+type Set{
+    _id: String
+    title: String
+    dots: [Dot]
+}
+
+type Query{
+    set(_id: String!): Set
+    sets : [Set]
+}
+
+type Mutation{
+    addSet(title: String): [QueryResultMessage]    
+    deleteSet(_id: String!): [QueryResultMessage]
+}

@@ -1,0 +1,19 @@
+type Dot{
+    _id: String
+    label: String!
+    x:Float!
+    y:Float!
+    z:Float!
+}
+
+type Query{
+    dot(_id: String!): Dot
+    dots(set: String): [Dot]
+}
+
+type Mutation{
+    addDot(label:String, x: Float!, y: Float!, z: Float!, set: String): [QueryResultMessage]
+    deleteDot(_id: String!): [QueryResultMessage]
+    flushDots: [QueryResultMessage]
+    dummyDots(n: Int!): [QueryResultMessage]
+}
